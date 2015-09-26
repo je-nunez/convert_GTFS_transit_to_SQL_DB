@@ -10,10 +10,10 @@ package src.main.scala.db
 
 /*
  * See notes on synchronization below
- *
- * import scala.concurrent._
- * import scala.concurrent.ExecutionContext.Implicits.global
  */
+import scala.concurrent._
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 import slick.driver.SQLiteDriver.api._
 
@@ -54,8 +54,8 @@ class DbGtfs(val destinationDir: String) {
     // FIXME: It might be necessary to synchronize the promise below on
     // futures (although there could be other concurrent work on parsing GTFS,
     // etc, while this SQL DDL commands finish)
-    // Await.ready(db.run(createGtfsTables)), Duration.Inf)
-    db.run(createGtfsTables)
+    Await.ready(db.run(createGtfsTables), Duration.Inf)
+    // db.run(createGtfsTables)
   }
 
   /*

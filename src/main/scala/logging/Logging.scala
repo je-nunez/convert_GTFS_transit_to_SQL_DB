@@ -1,10 +1,14 @@
 package src.main.scala.logging
 
-/*
- * Object: Logging
- *
- * Handle logging messages to stderr with its method logMsg(...)
- */
+/**
+  * Object: <code>Logging</code>
+  *
+  * Handles the system default logging threshold, and the logging of messages
+  * to a log destination with its method logMsg(...)
+  *
+  * (Further on, this logging needs to be made more fine-grained as in a
+  * system with many different sub-systems: see SLF4J)
+  */
 
 object Logging extends Enumeration {
   type Logging = Value
@@ -18,12 +22,12 @@ object Logging extends Enumeration {
   val INFO = Value(6)
   val DEBUG = Value(7)
 
-  var loggingThreshold: Logging = WARNING
+  var loggingThreshold: Logging = ERROR
 
-  def logMsg(level: Logging, err_msg: String)
+  def logMsg(level: Logging, errMsg: String)
   {
     if (level <= loggingThreshold) {
-      System.err.println(level.toString + ": " + err_msg)
+      System.err.println(level.toString + ": " + errMsg)
     }
   }
 }
