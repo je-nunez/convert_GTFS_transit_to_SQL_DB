@@ -7,7 +7,7 @@ import src.main.scala.config.Config
 import src.main.scala.db.DbGtfs
 import src.main.scala.opendata._
 
-class ConvertGtfsCsvModelToDb(
+class ConvertGtfsCsvControllerToDb(
      val srcGtfsCvsDirectory: String,
      val dstGtfsDb: DbGtfs
   ) {

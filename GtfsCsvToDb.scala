@@ -10,7 +10,7 @@ import scala.collection.JavaConversions._
 
 import src.main.scala.logging.Logging._
 import src.main.scala.config.Config
-import src.main.scala.model.ConvertGtfsCsvModelToDb
+import src.main.scala.model.ConvertGtfsCsvControllerToDb
 import src.main.scala.db.DbGtfs
 
 /*
@@ -70,7 +70,7 @@ object convertGtfsCsvToDb {
     val gtfsDb = new DbGtfs(dstOutputDirect)
 
     val gtfsConversionModel =
-      new ConvertGtfsCsvModelToDb(gtfsInputDirect, gtfsDb)
+      new ConvertGtfsCsvControllerToDb(gtfsInputDirect, gtfsDb)
 
     gtfsConversionModel.loadGtfsModelIntoDb(ignoreAgencyValidation)
 
